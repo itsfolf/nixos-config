@@ -40,12 +40,11 @@
         meow = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system inputs;
-            noctalia = inputs.noctalia;
             hostName = "meow";
           };
 
           modules = [
-            ./nixos/configuration.nix
+            ./hosts/meow/configuration.nix
           ];
         };
       };
@@ -53,8 +52,6 @@
       agenix-rekey = inputs.agenix-rekey.configure {
         userFlake = self;
         nixosConfigurations = self.nixosConfigurations;
-        # Example for colmena:
-        # nixosConfigurations = ((colmena.lib.makeHive self.colmena).introspect (x: x)).nodes;
       };
     };
 }
