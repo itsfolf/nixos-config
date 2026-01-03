@@ -5,11 +5,16 @@
   config,
   lib,
   pkgs,
+  modulesPath,
   age,
   ...
 }:
 
 {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   boot = {
     loader = {
       efi = {
