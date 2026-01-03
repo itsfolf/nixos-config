@@ -105,6 +105,7 @@
       { }
   );
 
+  services.displayManager.ly.enable = true;
   programs = {
     firefox.enable = true;
     steam.enable = true;
