@@ -2,7 +2,8 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-inputs@{
+{
+  inputs,
   config,
   lib,
   pkgs,
@@ -13,38 +14,17 @@ inputs@{
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.self.modules.nixosModules.default
   ];
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  nixpkgs.config.allowUnfree = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  boot = {
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        # efiInstallAsRemovable = true;
-      };
-    };
-
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "video=DP-4:1920x1080@60"
-      "video=DP-5:1920x1080@60"
-    ];
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   };
 
-  networking.hostName = hostName;
+  # Networking
   networking.networkmanager.enable = true;
+  services.netbird.enable = true;
+  services.sshd.enable = true;
 
   age.secrets."wifi/owo" = { };
   age.secrets."wifi/red" = { };
@@ -85,15 +65,10 @@ inputs@{
       };
     };
   };
-  time.timeZone = "Europe/Amsterdam";
 
-  # Select internationalisation properties.
+  time.timeZone = "Europe/Amsterdam";
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+
   fonts = {
     packages = with pkgs; [
       noto-fonts-color-emoji
@@ -111,10 +86,7 @@ inputs@{
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.netbird.enable = true;
-  services.sshd.enable = true;
 
-  users.mutableUsers = false;
   age.secrets."user-password" = { };
   users.users.folf = {
     isNormalUser = true;

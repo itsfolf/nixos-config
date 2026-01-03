@@ -27,14 +27,15 @@
 
       pkgs = import nixpkgs {
         inherit system;
+      };
 
-        config = {
-          allowUnfree = true;
-        };
+      myLib = import ./lib { lib = pkgs.lib; };
+      modules = myLib.loadModules {
+        inherit inputs;
       };
     in
     {
-
+      inherit modules;
       nixosConfigurations = {
         meow = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -45,7 +46,6 @@
 
           modules = [
             ./nixos/configuration.nix
-            ./modules/common/agenix.nix
           ];
         };
       };
