@@ -157,7 +157,12 @@
     signal-desktop
     tidal-hifi
     bitwarden-desktop
-    vesktop
+    #vesktop
+    (discord-canary.override {
+      #withOpenASAR = true;
+      # withVencord = true;
+      withEquicord = true;
+    })
     libguestfs
   ];
 
