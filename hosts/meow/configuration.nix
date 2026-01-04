@@ -110,7 +110,6 @@
     firefox.enable = true;
     steam.enable = true;
     niri.enable = true;
-    #libguestfs.enable = true;
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -123,7 +122,6 @@
         "HIST_IGNORE_ALL_DUPS"
       ];
     };
-    #starship.enable = true;
   };
 
   xdg.portal = {
@@ -157,18 +155,10 @@
     signal-desktop
     tidal-hifi
     bitwarden-desktop
-    #vesktop
     (discord-canary.override {
-      #withOpenASAR = true;
-      # withVencord = true;
       withEquicord = true;
     })
-    libguestfs
   ];
-
-  # environment.sessionVariables = rec {
-  #   XDG_SESSION_TYPE = "wayland";
-  # };
 
   # DO NOT CHANGE, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
