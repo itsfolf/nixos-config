@@ -90,7 +90,7 @@
   age.secrets."user-password" = { };
   users.users.folf = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
@@ -125,7 +125,12 @@
     direnv.enable = true;
   };
   virtualisation.docker = {
-    enable = true;
+    enable = false;
+
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   xdg.portal = {
