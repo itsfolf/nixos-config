@@ -159,6 +159,7 @@
     starship
     git
     unzip
+    jetbrains.datagrip
 
     telegram-desktop
     signal-desktop
