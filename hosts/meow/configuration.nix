@@ -143,6 +143,7 @@
     config.common.default = "*";
   };
   services.pcscd.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
