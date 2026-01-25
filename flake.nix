@@ -53,5 +53,7 @@
         userFlake = self;
         nixosConfigurations = self.nixosConfigurations;
       };
+
+      overlays.default = import ./overlay.nix;
     };
 }

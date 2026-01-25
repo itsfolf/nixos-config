@@ -14,4 +14,8 @@
     automatic = true;
     options = "--delete-older-than 30d";
   };
+
+  nixpkgs.overlays = [
+    inputs.self.overlays.default
+  ];
 }
