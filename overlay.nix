@@ -1,10 +1,12 @@
-final: prev:
 let
-  mkPackage = name: {
+  mkPackage = name: final: {
     inherit name;
     value = final.callPackage ./packages/${name} { };
   };
 
   names = builtins.attrNames (builtins.readDir ./packages);
 in
-builtins.listToAttrs (map mkPackage names)
+{
+  overlay = final: prev: builtins.listToAttrs (map (name: mkPackage name final) names);
+  packageNames = names;
+}

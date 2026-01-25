@@ -25,8 +25,10 @@
     let
       system = "x86_64-linux";
 
+      overlay = import ./overlay.nix;
       pkgs = import nixpkgs {
         inherit system;
+        overlays = [ overlay.overlay ];
       };
 
       myLib = import ./lib { lib = pkgs.lib; };
@@ -54,6 +56,12 @@
         nixosConfigurations = self.nixosConfigurations;
       };
 
-      overlays.default = import ./overlay.nix;
+      overlays.default = overlay.overlay;
+      packages.${system} = builtins.listToAttrs (
+        map (name: {
+          inherit name;
+          value = pkgs.${name};
+        }) overlay.packageNames
+      );
     };
 }
