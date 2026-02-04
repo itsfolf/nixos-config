@@ -60,7 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchurl {
     url = "https://updater.osmium.chat/Osmium-0.0.6-alpha-x64.tar.gz";
-    hash = "sha256-H2575yc/NI/TaJjtIcVsK9lJ7lv2dt4uY1j4EWzhqDs=";
+    hash = "sha256-oZd8ML1iX2tfl/8xR20aqGGSO3ZgjeSH025PqGtaZ8o=";
   };
 
   nativeBuildInputs = [
