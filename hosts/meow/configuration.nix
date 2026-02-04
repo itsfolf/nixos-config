@@ -203,6 +203,7 @@
     (discord-canary.override {
       withEquicord = true;
     })
+    osmium
   ];
 
   # DO NOT CHANGE, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
