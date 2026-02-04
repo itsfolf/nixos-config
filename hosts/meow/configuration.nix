@@ -144,10 +144,44 @@
   };
   services.pcscd.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
-    vscode
+    (vscode-with-extensions.override {
+      vscodeExtensions =
+        with vscode-extensions;
+        [
+          vscode-extensions.vadimcn.vscode-lldb
+          ms-vscode-remote.remote-ssh
+          vscode-extensions.ms-azuretools.vscode-containers
+          vscode-extensions.github.copilot-chat
+          vscode-extensions.docker.docker
+          vscode-extensions.usernamehw.errorlens
+          vscode-extensions.tamasfe.even-better-toml
+          vscode-extensions.eamodio.gitlens
+          vscode-extensions.arrterian.nix-env-selector
+          vscode-extensions.jnoortheen.nix-ide
+          vscode-extensions.rust-lang.rust-analyzer
+          wakatime.vscode-wakatime
+          vscode-extensions.golang.go
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "protobuf-vsc";
+            publisher = "drblury";
+            version = "1.4.28";
+            sha256 = "sha256-yd2A6fqVhwOw3JIbHrU+x3gCiCz+H6Xti0hx3U3IISM=";
+          }
+          {
+            name = "vscode-scss";
+            publisher = "mrmlnc";
+            version = "0.10.0";
+            sha256 = "sha256-Iuirq+SUZz3V6QHeZNyj9EaWSszL4fD4cdorcMnbbSI=";
+          }
+        ];
+    })
+
     nixfmt-rfc-style
 
     xwayland-satellite
