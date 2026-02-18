@@ -125,7 +125,7 @@
     direnv.enable = true;
   };
   virtualisation.docker = {
-    enable = false;
+    enable = true;
 
     rootless = {
       enable = true;
@@ -204,6 +204,7 @@
       withEquicord = true;
     })
     osmium
+    distrobox
   ];
 
   # DO NOT CHANGE, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
