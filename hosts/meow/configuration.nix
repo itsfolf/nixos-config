@@ -145,6 +145,7 @@
   services.pcscd.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.gpu-screen-recorder.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -165,13 +166,14 @@
           vscode-extensions.rust-lang.rust-analyzer
           wakatime.vscode-wakatime
           vscode-extensions.golang.go
+          vscode-extensions.astro-build.astro-vscode
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "protobuf-vsc";
             publisher = "drblury";
-            version = "1.4.28";
-            sha256 = "sha256-yd2A6fqVhwOw3JIbHrU+x3gCiCz+H6Xti0hx3U3IISM=";
+            version = "1.6.0";
+            sha256 = "sha256-HvTJSFRKO0K7Ud9381viPrXp3TInB1FT97qZArosAjY=";
           }
           {
             name = "vscode-scss";
@@ -205,6 +207,7 @@
     })
     osmium
     distrobox
+    thunderbird
   ];
 
   # DO NOT CHANGE, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
