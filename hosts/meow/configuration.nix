@@ -25,6 +25,7 @@
   networking.networkmanager.enable = true;
   services.netbird.enable = true;
   services.sshd.enable = true;
+  services.avahi.enable = true; 
 
   age.secrets."wifi/owo" = { };
   age.secrets."wifi/red" = { };
@@ -145,7 +146,7 @@
   services.pcscd.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.gpu-screen-recorder.enable = true;
-
+  services.gvfs.enable = true;
   environment.systemPackages = with pkgs; [
     vim
     wget
