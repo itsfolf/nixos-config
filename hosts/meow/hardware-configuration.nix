@@ -29,8 +29,8 @@
 
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
-      "video=DP-4:1920x1080@60"
-      "video=DP-5:1920x1080@60"
+      "video=DP-4:3840x2160@160"
+      "video=DP-3:3840x2160@160"
     ];
   };
 
